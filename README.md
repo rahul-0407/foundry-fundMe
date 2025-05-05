@@ -1,66 +1,43 @@
-## Foundry
+# FundMe 💸
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A decentralized crowdfunding smart contract built with Solidity and Chainlink Price Feeds. Users can fund the contract with ETH, and the contract ensures the sent amount meets a minimum USD value using real-time conversion. Only the contract owner can withdraw the collected funds.
 
-Foundry consists of:
+## 🧾 Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- ✅ Fund with ETH (minimum $5 USD equivalent)
+- ✅ Chainlink Price Feed integration for real-time ETH/USD price
+- ✅ Owner-only withdrawals
+- ✅ Gas-efficient withdrawal function
+- ✅ Built with [Foundry](https://book.getfoundry.sh/) for testing, scripting, and deployment
+- ✅ Fallback and receive functions to catch ETH transfers
 
-## Documentation
+---
 
-https://book.getfoundry.sh/
+## 🧱 Smart Contracts
 
-## Usage
+### `FundMe.sol`
+The main contract which:
+- Accepts ETH funding if above the minimum USD amount
+- Stores funders and the amount they’ve funded
+- Allows only the owner to withdraw the contract balance
 
-### Build
+### `PriceConverter.sol` (Library)
+- Converts ETH to USD using a Chainlink AggregatorV3Interface
+- Fetches live ETH price data
 
-```shell
-$ forge build
-```
+---
 
-### Test
+## 🔧 Requirements
 
-```shell
-$ forge test
-```
+- Node.js & NPM
+- [Foundry](https://book.getfoundry.sh/getting-started/installation)
+- Chainlink Data Feeds (e.g., Sepolia ETH/USD address)
 
-### Format
+---
 
-```shell
-$ forge fmt
-```
+## 🧪 Running the Project
 
-### Gas Snapshots
+### Install Dependencies
 
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+```bash
+forge install
